@@ -16,7 +16,6 @@
 ## How to start minikube:
 
 ```
-   Go to location where minikube.exe file is present 
 >> minikube.exe start
    This will download minikube image which internally has all things for a single node cluster.
 
