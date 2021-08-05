@@ -1,0 +1,35 @@
+- kubectl get nodes
+
+TO CREATE A POD
+- kubectl run nginx --image=nginx
+
+To DESCRIBE
+- kubernates describe pod pod-name
+- kubernates describe service service-name
+- kubernates describe replicaset replicaset-name
+
+To GET
+- kubectl get pods -o wide
+- kubectl get service
+- kubectl get deployments
+- kubectl get replicaset
+- kubectl get all
+
+TO CREATE
+- kubectl create -f defination.yaml
+- kubectl replace -f defination.yaml
+- kubectl scale --replicas=3 defination.yaml
+
+UPDATE
+- kubectl apply -f defination.yaml
+- kubectl set image deployment/myapp-deployment-name container=newimage:0.0.2
+
+ROLLOUT
+- kubectl rollout status deployment/myapp-deployment-name
+- kubectl rollout history deployment/myapp-deployment-name
+- kubectl rollout undo deployment/myapp-deployment-name
+
+Strategies for Rollout 
+1. Recreate -> deletes all togethere and brings all new up , application down for period
+2. Rolling update -> delete one update one , default strategy
+
