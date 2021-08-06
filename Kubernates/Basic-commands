@@ -1,4 +1,5 @@
-- kubectl get nodes
+- kubectl get nodes -o wide
+- kubectl cluster-info
 
 TO CREATE A POD
 - kubectl run nginx --image=nginx
