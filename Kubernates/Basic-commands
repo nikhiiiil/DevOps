@@ -1,8 +1,10 @@
 - kubectl get nodes -o wide
 - kubectl cluster-info
+- kubectl get all
 
 TO CREATE A POD
 - kubectl run nginx --image=nginx
+- kubectl create -f pod-defination.yaml
 
 To DESCRIBE
 - kubernates describe pod pod-name
@@ -19,7 +21,13 @@ To GET
 TO CREATE
 - kubectl create -f defination.yaml
 - kubectl replace -f defination.yaml
-- kubectl scale --replicas=3 defination.yaml
+
+TO SCALE
+- kubectl scale --replicas=3 defination.yaml -n namespace
+- kubectl edit rs my-rs-name
+- kubectl scale replicaset repliaset-name --replicas=3 
+- kubectl edit deployment my-deployment-name
+- kubectl scale deployment deployment-name --replicas=3
 
 UPDATE
 - kubectl apply -f defination.yaml
@@ -34,3 +42,6 @@ Strategies for Rollout
 1. Recreate -> deletes all togethere and brings all new up , application down for period
 2. Rolling update -> delete one update one , default strategy
 
+IMPERATIVE COMMANDS
+1. kubectl run nginx --image=nginx
+2. kubectl create deployment nginx --image=nginx --replicas=3
