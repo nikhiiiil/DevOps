@@ -32,3 +32,7 @@
 >> minikube delete
 
 ```
+
+## Cheat Sheet for Kubectl
+
+* https://kubernetes.io/docs/reference/kubectl/cheatsheet/
