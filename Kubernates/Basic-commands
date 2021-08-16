@@ -28,6 +28,7 @@ TO Create Service
 2. kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml
 3. kubectl expose pod nginx --port=80 --name nginx-service --type=NodePort --dry-run=client -o yaml
 4. kubectl create service nodeport nginx --tcp=80:80 --node-port=30080 --dry-run=client -o yaml
+5. kubectl expose deployment nginx --port=80 --target-port=8000
 Note: kubectl expose uses pod labels as service labels & kubectl create service doesnt use pods labels
 
 TO SCALE
@@ -56,6 +57,9 @@ Dry Run
 IMPERATIVE COMMANDS
 1. kubectl run nginx --image=nginx
 2. kubectl create deployment nginx --image=nginx --replicas=3
+3. kubectl run redis --image=redis:alpine --labels=tier=db,name=myapp -o yaml --dry-run=client
+4. kubectl run custom-nginx --image=nginx --port=8080
+5. kubectl run https --image=httpd:alpine --port=80 --expose       // creates pods and service
 
 To set default Namespace of Cluster
 1. kubectl config set-context $(kubectl config current-context) --namespace=myNamespace
