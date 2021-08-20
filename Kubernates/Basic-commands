@@ -60,6 +60,9 @@ IMPERATIVE COMMANDS
 3. kubectl run redis --image=redis:alpine --labels=tier=db,name=myapp -o yaml --dry-run=client
 4. kubectl run custom-nginx --image=nginx --port=8080
 5. kubectl run https --image=httpd:alpine --port=80 --expose       // creates pods and service
+6. kubectl create secret generic mysecret --from-literal=key1=value1 --from-literal=key2=value2 --namespace=mynamespace 
+7. kubectl create secret generic mySecretFromFile --from-file=appication.properties
+8. kubectl create configmap app-config --from-literal=user=nikhil
 
 To set default Namespace of Cluster
 1. kubectl config set-context $(kubectl config current-context) --namespace=myNamespace
