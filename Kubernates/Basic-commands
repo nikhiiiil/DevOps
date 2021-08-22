@@ -54,6 +54,24 @@ Strategies for Rollout
 Dry Run 
 1. kubectl create ns my-namespace --dry-run -o yaml
 
+Taint Node:
+- kubectl taint node nodename key=value:taint-effect
+  taint-effects: NoSchedule|PreferNoSchedule|NoExecute
+1. kubectl taint nodes controlplane node-role.kubernetes.io/master:NoSchedule
+
+UnTaint Node:
+kubectl taint nodes controlplane node-role.kubernetes.io/master:NoSchedule-
+
+Taint & Tolerations:
+1. Taints are applied to nodes
+2. Tolerations are applied to pods
+
+NODE SELECTORS
+1. label a node with command 
+   kubectl label nodes node01 key=value
+2. add node selectors in pod defination 
+ 
+
 IMPERATIVE COMMANDS
 1. kubectl run nginx --image=nginx
 2. kubectl create deployment nginx --image=nginx --replicas=3
