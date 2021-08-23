@@ -18,6 +18,8 @@ To GET
 - kubectl get deployments
 - kubectl get replicaset
 - kubectl get all
+- kubectl get pod --selector app=frontend
+- kubectl get all --selector env=prod,bu=finance,tier=frontend
 
 TO CREATE
 - kubectl create -f defination.yaml
@@ -46,6 +48,8 @@ ROLLOUT
 - kubectl rollout status deployment/myapp-deployment-name
 - kubectl rollout history deployment/myapp-deployment-name
 - kubectl rollout undo deployment/myapp-deployment-name
+- kubectl rollout history deployment nginx --revision=1
+- kubectl set image deployment nginx nginx=nginx:1.17 --record
 
 Strategies for Rollout 
 1. Recreate -> deletes all togethere and brings all new up , application down for period
@@ -74,6 +78,25 @@ NODE SELECTORS
 NODE AFFINITY
 - To ensure pods are placed on particular nodes.
  
+MULTI-CONTAINER Pods
+- 3 design patterns
+  1. Side Car 
+  2. Ambassador
+  3. Adapter
+- pod defination would be same add into container array
+
+Monitoring Cluster:
+tools to monitor cluster and pods
+1. metrics-server
+2. prometheus
+3. elastic-stack 
+- kubectl addons enable metrics-server
+- git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+- 3 node cluster download yaml from git and run it
+
+Commands to Get cluster info
+- kubectl top node
+- kubectl top pod
 
 IMPERATIVE COMMANDS
 1. kubectl run nginx --image=nginx
