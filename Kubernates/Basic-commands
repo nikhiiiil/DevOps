@@ -70,6 +70,9 @@ NODE SELECTORS
 1. label a node with command 
    kubectl label nodes node01 key=value
 2. add node selectors in pod defination 
+
+NODE AFFINITY
+- To ensure pods are placed on particular nodes.
  
 
 IMPERATIVE COMMANDS
