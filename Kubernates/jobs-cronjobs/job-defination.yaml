@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job 
+metadata:
+  name: arthemetic-app
+  labels:
+    type: batch-processing
+spec:
+  # number of job to completes
+  completions: 3
+  # helps to create jobs parallely
+  parallelism: 3
+  template:
+    # pod spec section
+    spec:
+      containers:
+      - name: math-add
+        image: ubuntu
+        command:
+        - "expr"
+        args:
+        - "3"
+        - "+"
+        - "5"
+      restartPolicy: Never
+

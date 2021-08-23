@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob 
+metadata:
+  name: scheduler-report-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    # job spec section
+    spec:
+      completions: 3
+      parallelism: 3
+      template:
+        # pod spec section
+        spec:
+          containers:
+          - name: math-add
+            image: ubuntu
+            command:
+            - "expr"
+            args:
+            - "3"
+            - "+"
+            - "5"
+          restartPolicy: Never

@@ -20,6 +20,7 @@ To GET
 - kubectl get all
 - kubectl get pod --selector app=frontend
 - kubectl get all --selector env=prod,bu=finance,tier=frontend
+- kubectl get jobs
 
 TO CREATE
 - kubectl create -f defination.yaml
@@ -107,6 +108,9 @@ IMPERATIVE COMMANDS
 6. kubectl create secret generic mysecret --from-literal=key1=value1 --from-literal=key2=value2 --namespace=mynamespace 
 7. kubectl create secret generic mySecretFromFile --from-file=appication.properties
 8. kubectl create configmap app-config --from-literal=user=nikhil
+9. kubectl create job thow-dice-job --image=kodekloud/throw-dice -o yaml --dry-run=client
+10. kubectl create cronjob throw-dice-cron-job --image=kodekloud/throw-dice --schedule="30 21 * * *"
+11. kubectl explain job --recursive | less
 
 To set default Namespace of Cluster
 1. kubectl config set-context $(kubectl config current-context) --namespace=myNamespace
