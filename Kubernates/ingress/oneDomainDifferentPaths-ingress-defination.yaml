@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress 
+metadata:
+  name: onedomainmultipleservices
+spec:
+  rules:
+    # this http is not the same http/https which we see in URL
+    - host: "myonelinestore.com"
+      http:
+        paths:
+          - path: "/wear"
+            backend:
+              serviceName: my-wear-service
+              servicePort: 80
+          - path: "/support"
+            backend:
+              serviceName: my-support-service
+              servicePort: 80
+

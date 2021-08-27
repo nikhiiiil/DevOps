@@ -86,6 +86,25 @@ MULTI-CONTAINER Pods
   3. Adapter
 - pod defination would be same add into container array
 
+INGRESS 
+- By default kubernates cluster doesnt come with Ingress, so even if you configure ingress it doesnt work.
+- you need to install IngressController 
+- If ingress controller is installed, then it automatially looks for all ingress files present within the cluster.
+- in 3 ways you can write a ingress file
+  1. default service 
+  2. with different hostnames, for each host 1 rule has to be written
+  3. 1 host, different paths, for we map 1 service to eachpath
+- You may deploy any number of ingress controllers within a cluster. When you create an ingress, you should annotate each 
+  ingress with the appropriate ingress.class to indicate which ingress controller should be used if more than one exists within your cluster.
+
+NETWORK POLICY 
+- By default, all pods within cluster can communicate with each other
+- Ingress request: request comming into pod
+  EGress request: request going out of pod 
+- we apply network policy onto pod for some security purposes 
+
+
+
 Monitoring Cluster:
 tools to monitor cluster and pods
 1. metrics-server
@@ -111,12 +130,15 @@ IMPERATIVE COMMANDS
 9. kubectl create job thow-dice-job --image=kodekloud/throw-dice -o yaml --dry-run=client
 10. kubectl create cronjob throw-dice-cron-job --image=kodekloud/throw-dice --schedule="30 21 * * *"
 11. kubectl explain job --recursive | less
+12. kubectl create ingress <ingress-name> --rule="host/path=service:port"
+13. kubectl create ingress ingress-test --rule="wear.my-online-store.com/wear*=wear-service:80"
 
 To set default Namespace of Cluster
 1. kubectl config set-context $(kubectl config current-context) --namespace=myNamespace
 
 Important COMMANDS
 1. kubectl api-resources
+2. kubectl get NetworkPolicy
 
 OUTPUT:
 
