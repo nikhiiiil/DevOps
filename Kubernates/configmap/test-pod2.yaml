@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: trino-pod
+spec:
+  containers:
+    - name: trino
+      image: nginx
+      resources: {}
+      volumeMounts:
+        - mountPath: /etc/trino/gcs.json
+          subPath: gcs.json
+          name: gcs-volume
+        - mountPath: /etc/trino/catalog/gcs.properties
+          subPath: gcs.properties
+          name: gcs-volume
+  volumes:
+    - name: gcs-volume
+      configMap:
+        name: myapp-config
