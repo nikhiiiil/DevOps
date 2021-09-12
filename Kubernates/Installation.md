@@ -10,6 +10,8 @@
 
 * Oracle Vm  or any Hypervisor https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html
 
+* minikube official doc https://minikube.sigs.k8s.io/docs/start/
+
 ### Note:
 * Keep kubectl.exe and minikube.exe on same location
 
@@ -36,3 +38,7 @@
 ## Cheat Sheet for Kubectl
 
 * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+## AddOn's for minikube
+
+* minikube addons enable ingress
