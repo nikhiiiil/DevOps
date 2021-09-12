@@ -1,2 +1,4 @@
 # Add extensions and files to ignore
 *.exe
+out.yaml
+out.yml
