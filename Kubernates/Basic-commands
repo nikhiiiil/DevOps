@@ -103,7 +103,8 @@ NETWORK POLICY
   EGress request: request going out of pod 
 - we apply network policy onto pod for some security purposes 
 
-
+To check connectivity:
+- "nc -zvw servicename/ip port"
 
 Monitoring Cluster:
 tools to monitor cluster and pods
