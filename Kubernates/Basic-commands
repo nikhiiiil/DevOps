@@ -3,16 +3,16 @@
 - kubectl get all
 - kubectl get pods --all-namespaces
 
-TO CREATE A POD
+TO CREATE A POD:
 - kubectl run nginx --image=nginx
 - kubectl create -f pod-defination.yaml
 
-To DESCRIBE
+To DESCRIBE:
 - kubernates describe pod pod-name
 - kubernates describe service service-name
 - kubernates describe replicaset replicaset-name
 
-To GET
+To GET:
 - kubectl get pods -o wide
 - kubectl get service
 - kubectl get deployments
@@ -22,11 +22,11 @@ To GET
 - kubectl get all --selector env=prod,bu=finance,tier=frontend
 - kubectl get jobs
 
-TO CREATE
+TO CREATE:
 - kubectl create -f defination.yaml
 - kubectl replace -f defination.yaml
 
-TO Create Service 
+TO Create Service:
 1. kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml
 2. kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml
 3. kubectl expose pod nginx --port=80 --name nginx-service --type=NodePort --dry-run=client -o yaml
@@ -34,29 +34,29 @@ TO Create Service
 5. kubectl expose deployment nginx --port=80 --target-port=8000
 Note: kubectl expose uses pod labels as service labels & kubectl create service doesnt use pods labels
 
-TO SCALE
+TO SCALE:
 - kubectl scale --replicas=3 defination.yaml -n namespace
 - kubectl edit rs my-rs-name
 - kubectl scale replicaset repliaset-name --replicas=3 
 - kubectl edit deployment my-deployment-name
 - kubectl scale deployment deployment-name --replicas=3
 
-UPDATE
+TO UPDATE:
 - kubectl apply -f defination.yaml
 - kubectl set image deployment/myapp-deployment-name container=newimage:0.0.2
 
-ROLLOUT
+TO ROLLOUT:
 - kubectl rollout status deployment/myapp-deployment-name
 - kubectl rollout history deployment/myapp-deployment-name
 - kubectl rollout undo deployment/myapp-deployment-name
 - kubectl rollout history deployment nginx --revision=1
 - kubectl set image deployment nginx nginx=nginx:1.17 --record
 
-Strategies for Rollout 
+Strategies for Rollout:
 1. Recreate -> deletes all togethere and brings all new up , application down for period
 2. Rolling update -> delete one update one , default strategy
 
-Dry Run 
+Dry Run:
 1. kubectl create ns my-namespace --dry-run -o yaml
 
 Taint Node:
@@ -71,22 +71,22 @@ Taint & Tolerations:
 1. Taints are applied to nodes
 2. Tolerations are applied to pods
 
-NODE SELECTORS
+NODE SELECTORS:
 1. label a node with command 
    kubectl label nodes node01 key=value
 2. add node selectors in pod defination 
 
-NODE AFFINITY
+NODE AFFINITY:
 - To ensure pods are placed on particular nodes.
  
-MULTI-CONTAINER Pods
+MULTI-CONTAINER Pods:
 - 3 design patterns
   1. Side Car 
   2. Ambassador
   3. Adapter
 - pod defination would be same add into container array
 
-INGRESS 
+INGRESS:
 - By default kubernates cluster doesnt come with Ingress, so even if you configure ingress it doesnt work.
 - you need to install IngressController 
 - If ingress controller is installed, then it automatially looks for all ingress files present within the cluster.
@@ -97,7 +97,7 @@ INGRESS
 - You may deploy any number of ingress controllers within a cluster. When you create an ingress, you should annotate each 
   ingress with the appropriate ingress.class to indicate which ingress controller should be used if more than one exists within your cluster.
 
-NETWORK POLICY 
+NETWORK POLICY:
 - By default, all pods within cluster can communicate with each other
 - Ingress request: request comming into pod
   EGress request: request going out of pod 
@@ -119,7 +119,7 @@ Commands to Get cluster info
 - kubectl top node
 - kubectl top pod
 
-IMPERATIVE COMMANDS
+IMPERATIVE COMMANDS:
 1. kubectl run nginx --image=nginx
 2. kubectl create deployment nginx --image=nginx --replicas=3
 3. kubectl run redis --image=redis:alpine --labels=tier=db,name=myapp -o yaml --dry-run=client
@@ -137,7 +137,7 @@ IMPERATIVE COMMANDS
 To set default Namespace of Cluster
 1. kubectl config set-context $(kubectl config current-context) --namespace=myNamespace
 
-Important COMMANDS
+Important COMMANDS:
 1. kubectl api-resources
 2. kubectl get NetworkPolicy
 
