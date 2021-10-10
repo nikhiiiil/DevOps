@@ -106,6 +106,10 @@ NETWORK POLICY:
 To check connectivity:
 - "nc -zvw servicename/ip port"
 
+To Use private docker registry we need to create secret in cluster:
+- kubectl create secret docker-regisry --docker-server=$DOCKER_REGISTRY_SERVER \
+  --docker-username=$DOCKER_USER --docker-password=$DOCKER_PASSWORD --docker-email=$DOCKER_EMAIL
+
 Monitoring Cluster:
 tools to monitor cluster and pods
 1. metrics-server
